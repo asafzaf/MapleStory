@@ -1,37 +1,44 @@
-#include <iostream>
-using namespace std;
-#include <string.h>
-#include "Character.cpp"
+#include "User.hpp"
+using namespace Users;
 
-typedef class User_t {
-private:    
-    char userName[10];
-    char password[10];
-    Character characters [5]; //Notice it’s an array of the next Class
-public:
-    User(userName, password);
-    User(userName, password, character);
-    User(userName, password, character[]);
+// Create New User //
+User(char* userName, char* password) {
+    try{ 
+        user* new_user = new user ;
+        if ( new_user == NULL ){
+            throw 1;
+        }
 
+        new_user->userName = new char[10];
+        new_user->password = new char[10];
+        if ( new_user->userName == NULL || new_user->password == NULL ){
+            throw 2;
+        }
+
+        strcpy(new_user->userName, userName);
+        strcpy(new_user->password, password);
     
-    user* signUp( char &userName, char &password );
-    user* logIn( char &userName, char &password, character);
-    user* (userName, password, character[]);
-} user ;
+    }   catch ( int e ) ;
 
-user* signUp( char &userName, char &password ) {
-    user* new_user = new user ;
-    if ( new_user == NULL ){
-        return NULL;
-    }
+User(char* userName, char* password, character) {
+    try{
+        User* new_user = new User ;
+        if ( new_user == NULL ){
+            throw 1;
+        }
 
-    new_user->userName = new char[10];
-    new_user->password = new char[10];
+        new_user->userName = new char[10];
+        new_user->password = new char[10];
+        if ( new_user->userName == NULL || new_user->password == NULL ){
+            throw 2;
+        }
 
-    strcpy(new_user->userName, userName);
-    strcpy(new_user->password, password);
+        strcpy(new_user->userName, userName);
+        strcpy(new_user->password, password);
+    
+    }   catch ( int e ) ;
 
-    return user;
 }
 
-User* logIn( char &userName, char &password, character);
+
+}
