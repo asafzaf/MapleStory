@@ -1,44 +1,50 @@
 #include "User.hpp"
-using namespace Users;
+#include "Character.hpp"
+
+// using namespace Users;
 
 // Create New User //
-User(char* userName, char* password) {
-    try{ 
-        user* new_user = new user ;
-        if ( new_user == NULL ){
+User::User(char *Name, char *pass)
+{
+    try
+    {
+        userName = new char[strlen(Name) + 1];
+        if (userName == NULL)
+        {
+            throw 1;
+        }
+        password = new char[strlen(pass) + 1];
+        if (password == NULL)
+        {
             throw 1;
         }
 
-        new_user->userName = new char[10];
-        new_user->password = new char[10];
-        if ( new_user->userName == NULL || new_user->password == NULL ){
-            throw 2;
-        }
+        strcpy(userName, Name);
+        strcpy(password, pass);
 
-        strcpy(new_user->userName, userName);
-        strcpy(new_user->password, password);
-    
-    }   catch ( int e ) ;
+        cout << "User created!" << endl << "User name: " << userName << endl;
+        cout << "Password: " << password << endl;
+    }
+    catch (int e)
+    {
+        cout << "error with user and password - NULL argument" << endl;
+    }
+}
 
-User(char* userName, char* password, character) {
-    try{
-        User* new_user = new User ;
-        if ( new_user == NULL ){
-            throw 1;
-        }
+User::User(char* Name, char* pass, Character the_character) {
+      
+userName = new char[strlen(Name)+1];
+strcpy(userName, Name);
 
-        new_user->userName = new char[10];
-        new_user->password = new char[10];
-        if ( new_user->userName == NULL || new_user->password == NULL ){
-            throw 2;
-        }
+password = new char[strlen(pass)+1];
+strcpy(password, pass);
 
-        strcpy(new_user->userName, userName);
-        strcpy(new_user->password, password);
-    
-    }   catch ( int e ) ;
+characters[0] = the_character;
+
 
 }
 
-
+User::~User(){
+    delete userName;
+    delete password;
 }

@@ -1,5 +1,7 @@
+#ifndef __CHARACTER__
+#define __CHARACTER__
+#include "Enemy.hpp"
 using namespace std;
-
 
 enum job {Warrior, Magician, Rouge, Archer, Pirate};
 
@@ -13,8 +15,12 @@ private:
     int healthPoints; // Character health
     int attackStrength;
 public:
-    Character( char* &characterName, int &characterJob);
-    Character( char* &characterName, int &characterJob, int &healthPoints);
-    Character( char* &characterName, int &characterJob, int &healthPoints, int &attackStrength);
-    void attack(Enemy);
+    //Character();
+    Character( char* Name, job Job);
+    // Character( char* Name, job Job, int hp);
+    // Character( char* Name, job Job, int hp, int Strength);
+    int attack(Enemy enemy);
+
+    ~Character();
 } ;
+#endif
