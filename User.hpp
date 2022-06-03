@@ -14,7 +14,7 @@ private:
 public:
     //User();
     User(char* Name, char* pass);
-    User(char* Name, char* pass, Character the_character); 
+    User(char* Name, char* pass, Character &the_character); 
     User(char* Name, char* pass, Character the_character[]);
     int uservaildator(char* name, char* pass);
     ~User();

@@ -1,6 +1,7 @@
 #include "User.hpp"
 #include "Character.hpp"
 
+using namespace std;
 // using namespace Users;
 
 // Create New User //
@@ -22,7 +23,8 @@ User::User(char *Name, char *pass)
         strcpy(userName, Name);
         strcpy(password, pass);
 
-        cout << "User created!" << endl << "User name: " << userName << endl;
+        cout << "User created!" << endl
+             << "User name: " << userName << endl;
         cout << "Password: " << password << endl;
     }
     catch (int e)
@@ -31,20 +33,28 @@ User::User(char *Name, char *pass)
     }
 }
 
-User::User(char* Name, char* pass, Character the_character) {
-      
-userName = new char[strlen(Name)+1];
-strcpy(userName, Name);
+User::User(char *Name, char *pass, Character &the_character)
+{
+    char* characName;
+    cout << "Please type Character name : ";
+    cin >> characName;
+    Job characterJob;
+    cout << "Please choose a job : ";
+    cin >> characterJob;
 
-password = new char[strlen(pass)+1];
-strcpy(password, pass);
+    userName = new char[strlen(Name) + 1];
+    strcpy(userName, Name);
 
-characters[0] = the_character;
+    password = new char[strlen(pass) + 1];
+    strcpy(password, pass);
 
+    //characters[0] = the_character;
 
+    Character the_character(characName , characterJob);
 }
 
-User::~User(){
+User::~User()
+{
     delete userName;
     delete password;
 }

@@ -20,6 +20,40 @@ Character::Character(char *Name, job Job)
         }
 
         characterJob = Job;
+        
+        int experience = 0;
+        int experienceCapacity = 10;
+        int level = 1;
+
+        switch(Job)
+        {
+            case 0:
+            {
+                int healthPoints = 50;
+                int attackStrength = 15;
+            }
+            case 1:
+            {
+                int healthPoints = 20;
+                int attackStrength = 30;
+            }
+            case 2:
+            {
+                int healthPoints = 30;
+                int attackStrength = 20;
+            }
+            case 3:
+            {
+                int healthPoints = 35;
+                int attackStrength = 10;
+            }
+            case 4:
+            {
+                int healthPoints = 25;
+                int attackStrength = 25;
+            }
+        }
+
 
     }
     catch (int e)

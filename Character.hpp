@@ -3,7 +3,7 @@
 #include "Enemy.hpp"
 using namespace std;
 
-enum job {Warrior, Magician, Rouge, Archer, Pirate};
+typedef enum job {Warrior, Magician, Rouge, Archer, Pirate} Job;
 
 class Character {
 private:
@@ -15,7 +15,7 @@ private:
     int healthPoints; // Character health
     int attackStrength;
 public:
-    //Character();
+    Character();
     Character( char* Name, job Job);
     // Character( char* Name, job Job, int hp);
     // Character( char* Name, job Job, int hp, int Strength);

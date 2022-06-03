@@ -14,12 +14,12 @@ Enemy::Enemy(char* Name){
 
         strcpy(enemyName, Name);
 
-        int E_healthPoints = 10;
-        int E_attackStrength = 10;
-        int E_experienceWorth = 10;
+        int healthPoints = 10;
+        int attackStrength = 10;
+        int experienceWorth = 10;
 
         cout << "Enemy created!" << endl << "User name: " << enemyName << endl;
-        cout << "Enemy healh: " << E_healthPoints << endl << "Enamy attak: " << E_attackStrength << endl << "Enemy experience: " << E_experienceWorth << endl;
+        cout << "Enemy healh: " << healthPoints << endl << "Enamy attak: " << attackStrength << endl << "Enemy experience: " << experienceWorth << endl;
     }
     catch (int e)
     {
