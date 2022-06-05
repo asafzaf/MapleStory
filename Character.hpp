@@ -3,7 +3,7 @@
 #include "Enemy.hpp"
 using namespace std;
 
-typedef enum job {Warrior, Magician, Rouge, Archer, Pirate} Job;
+ enum job {Default = -1,Warrior, Magician, Rouge, Archer, Pirate} ;
 
 class Character {
 private:
@@ -20,7 +20,7 @@ public:
     // Character( char* Name, job Job, int hp);
     // Character( char* Name, job Job, int hp, int Strength);
     int attack(Enemy enemy);
-
+   // void copy_character(Character& new_character); ///////later
     ~Character();
 } ;
 #endif

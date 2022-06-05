@@ -3,6 +3,16 @@
 
 using namespace std;
 
+Character::Character(){
+    characterName = NULL;
+    characterJob = Default ;
+    experience = 0;
+    experienceCapacity = 20;
+    level = 0;
+    healthPoints = 10;
+    attackStrength = 10;
+}
+
 Character::Character(char *Name, job Job)
 {
 
@@ -63,6 +73,12 @@ Character::Character(char *Name, job Job)
 }
 
 
+
 Character::~Character(){
     delete characterName;
 }
+
+// void copy_character(Character& new_character){
+//     new_character = new Character(characterName, characterJob, healthPoints, )
+
+// }

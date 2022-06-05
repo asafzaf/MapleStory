@@ -4,7 +4,9 @@
 #include <iostream>
 
 using namespace std;
-
+ char main_user_name[] = "YuviVerse";
+ char main_user_pass[] = "TwitchTTV";
+User main_user(main_user_name, main_user_pass);
 
 int main() {
 
