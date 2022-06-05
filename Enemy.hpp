@@ -11,9 +11,9 @@ private:
     int experienceWorth;
 public:
     Enemy(char* Name);
-/*     Enemy(char* EnemyName, int healthPoints);
-    Enemy(char* EnemyName, int healthPoints, int attackStrength);
-    Enemy(char* EnemyName, int healthPoints, int attackStrength, int experienceWorth); */
+    Enemy(char* Name, int hp);
+    Enemy(char* Name, int hp, int Strength);
+    Enemy(char* Name, int hp, int Strength, int expWorth);
 
     ~Enemy();
 } ;

@@ -4,13 +4,8 @@
 using namespace std;
 
 Character::Character(){
-    characterName = NULL;
-    characterJob = Default ;
-    experience = 0;
-    experienceCapacity = 20;
-    level = 0;
-    healthPoints = 10;
-    attackStrength = 10;
+characterName = NULL;
+
 }
 
 Character::Character(char *Name, job Job)
@@ -72,13 +67,35 @@ Character::Character(char *Name, job Job)
     }
 }
 
+Character::Character( char* Name, job Job, int hp, int Strength){
 
+    try
+    {
+        characterName = new char[strlen(Name)+1];
+        if(characterName == NULL){
+            throw 1;
+        }
+        strcpy(characterName , Name);
+        
+        if(Job > 4 || Job < 0){
+            throw 2;
+        }
+
+        characterJob = Job;
+        
+        int experience = 0;
+        int experienceCapacity = 10;
+        int level = 1;
+        healthPoints = hp;
+        attackStrength = Strength;
+
+}catch(int e)
+        {
+            cout << "ERROR" << endl;
+        }
+}
 
 Character::~Character(){
     delete characterName;
 }
 
-// void copy_character(Character& new_character){
-//     new_character = new Character(characterName, characterJob, healthPoints, )
-
-// }
