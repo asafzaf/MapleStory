@@ -9,6 +9,19 @@ using namespace std;
 User main_user(main_user_name, main_user_pass);
 int main() {
 
+
+cout << "<<LOG-IN>>" << endl;
+cout << " ````````" << endl << endl;
+
+//main_user.login(); 
+
+ if (!main_user.characterCount()){
+
+     
+ }
+
+
+
 char name1[5] = "rony";
 char name2[10] = "asaf";
 char password[10] = "12345";
