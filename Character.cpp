@@ -21,7 +21,7 @@ Character::Character(char *Name, job Job)
         }
         strcpy(characterName, Name);
 
-        if (Job > 4 || Job < 0)
+        if (Job > 4 || Job < -1)
         {
             throw 2;
         }
