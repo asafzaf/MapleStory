@@ -15,6 +15,9 @@ private:
 public:
     void login();
     int characterCount();
+    void insert_character(Character character, unsigned int index);
+    void print_characters();
+    int chosen_charecter;
 
     User(char Name[], char pass[]);
     User(char Name[], char pass[], Character the_character);

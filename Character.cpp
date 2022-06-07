@@ -21,7 +21,7 @@ Character::Character(char *Name, job Job)
         }
         strcpy(characterName, Name);
 
-        if (Job > 4 || Job < 0)
+        if (Job > 4 || Job < -1)
         {
             throw 2;
         }
@@ -122,4 +122,34 @@ void Character::getJob(job &Job)
 Character::~Character()
 {
     delete characterName;
+}
+
+int Character::attack(Character character, Enemy attackd_enemy){
+    
+    int e_healthPoints = attackd_enemy.gethealth();
+    int e_attackStrength = attackd_enemy.getattack();
+    int e_experienceWorth = attackd_enemy.getexperiencworth();
+
+    while( healthPoints > 0 && e_healthPoints > 0)
+    {
+        e_healthPoints -= attackStrength;
+        if (e_healthPoints <= 0)
+        {
+            cout << characterName << " has won!!!" << endl <<
+                    "you got " << e_experienceWorth << "experience points" << endl <<
+                    "you have now " << experience + e_experienceWorth << "points of " << experienceCapacity << endl;
+            return e_experienceWorth;
+        }
+        else
+        {
+            healthPoints -= e_attackStrength;
+            if (healthPoints <= 0)
+            {
+                cout << characterName << " has lost..." << endl <<
+                    "you lost -5 experience points" << endl <<
+                    "you have now " << experience - 5 << "points of " << experienceCapacity << endl;
+                return -5;
+            }
+        }
+    }
 }

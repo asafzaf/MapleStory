@@ -10,23 +10,25 @@ using namespace std;
 
 User::User(char *Name, char *pass)
 {
-    char *initName = "N/A";
+    char initName[] = "N/A";
     strcpy(userName, Name);
     strcpy(password, pass);
 
     for (int i = 0; i < 5; i++)
     {
-        characters[i] = Character(initName, Default);
+        characters[i] = Character(initName, Default) ;
     }
+
     cout << "User created!" << endl
          << "User name: " << userName << endl;
     cout << "Password: " << password << endl;
-    delete[] initName;
+
+
 }
 
 User::User(char Name[], char pass[], Character the_character)
 {
-    char *initName = "N/A";
+    char initName[] = "N/A";
     strcpy(userName, Name);
     strcpy(password, pass);
 
@@ -79,7 +81,7 @@ void User::login()
 
 int User::characterCount()
 {
-    char initName[] = "N/A";
+    char  initName[] = "N/A";
     int count = 0;
     char const *curr_Name;
     job curr_job;
@@ -94,6 +96,50 @@ int User::characterCount()
     return count;
 }
 
+void User::insert_character(Character character, unsigned int index){
+
+    job job_check;
+
+
+    if(index > 4){
+        cout << "Invalid Index, searching for empty space" << endl;
+        index = 0;
+    }
+
+    for( ;index < 5 ; index++){
+
+    characters[index].getJob(job_check);
+   
+    if(job_check == Default){
+        characters[index].~Character();
+        characters[index] = character;
+        return;
+    }
+    }
+    cout << "Character List Is Full!" << endl;
+}
+
+void User::print_characters(){
+   
+   char J0[] = "Warrior"; char J1[] = "Magician"; char J2[] = "Rouge"; char J3[] = "Archer"; char J4[] = "Pirate";
+   char *job_list[5] = {J0, J1, J2, J3, J4 };
+   job curr_job;
+   char const* curr_name;
+    for (int i = 0 ; i < 5 ; i++){
+        characters[i].getName(curr_name);
+        characters[i].getJob(curr_job);
+
+        if (curr_job == Default){
+
+         cout << i+1 << ".  " << curr_name << "    " << "-" << endl ;
+            continue;
+        }
+
+        cout << i+1 << ".  " << curr_name << "    " << job_list[curr_job] << endl;
+
+    }
+
+}
 User::~User()
 {
     for (int i = 0; i < 5; i++)
