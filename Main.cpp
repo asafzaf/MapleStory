@@ -25,7 +25,20 @@ cout << " ````````" << endl << endl;
 char name1[5] = "rony";
 char name2[10] = "asaf";
 char password[10] = "12345";
-    Enemy E1(name1);
+    char E1_name[4] = "avi";
+    char E2_name[4] = "eli";
+    char E3_name[6] = "jakob";
+    char E4_name[6] = "david";
+    char E5_name[5] = "josh";
+    char E6_name[7] = "barbur";
+    char E7_name[7] = "sandal";
+    Enemy E1(E1_name);
+    Enemy E2(E2_name, 15, 15, 15);
+    Enemy E3(E3_name, 22, 5, 10);
+    Enemy E4(E4_name, 20, 10, 20);
+    Enemy E5(E5_name, 50, 15, 30);
+    Enemy E6(E6_name, 65, 30, 50);
+    Enemy E7(E7_name, 50, 35, 30);
     User myUser(name2, password);
     
 

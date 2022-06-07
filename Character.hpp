@@ -5,7 +5,7 @@ using namespace std;
 
  enum job {Default = -1, Warrior, Magician, Rouge, Archer, Pirate} ;
 
-class Character {
+class Character: public Enemy {
 private:
     char* characterName;
     enum job characterJob; 
@@ -15,7 +15,7 @@ private:
     int healthPoints; // Character health
     int attackStrength;
 public:
-    int attack(Enemy enemy);
+    int attack(Character character, Enemy attackd_enemy);
     void getName(char const* &ptr);
     void getJob(job& Job);
     Character();
@@ -24,4 +24,5 @@ public:
     Character( char* Name, job Job, int hp, int Strength);
     ~Character();
 } ;
+
 #endif

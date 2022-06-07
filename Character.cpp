@@ -1,4 +1,5 @@
 #include "Character.hpp"
+#include "Enemy.hpp"
 #include <Cstring>
 
 using namespace std;
@@ -117,6 +118,36 @@ void Character::getName(char const *&ptr)
 void Character::getJob(job &Job)
 {
     Job = characterJob;
+}
+
+int Character::attack(Character character, Enemy attackd_enemy){
+    
+    int e_healthPoints = gethealth(attackd_enemy);
+    int e_attackStrength = getattack(attackd_enemy);
+    int e_experienceWorth = getexperiencworth(attackd_enemy);
+
+    while( healthPoints > 0 && e_healthPoints > 0)
+    {
+        e_healthPoints -= attackStrength;
+        if (e_healthPoints <= 0)
+        {
+            cout << characterName << " has won!!!" << endl <<
+                    "you got " << e_experienceWorth << "experience points" << endl <<
+                    "you have now " << experience + e_experienceWorth << "points of " << experienceCapacity << endl;
+            return e_experienceWorth;
+        }
+        else
+        {
+            healthPoints -= e_attackStrength;
+            if (healthPoints <= 0)
+            {
+                cout << characterName << " has lost..." << endl <<
+                    "you lost -5 experience points" << endl <<
+                    "you have now " << experience - 5 << "points of " << experienceCapacity << endl;
+                return -5;
+            }
+        }
+    }
 }
 
 Character::~Character()
