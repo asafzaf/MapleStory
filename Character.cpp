@@ -1,12 +1,18 @@
 #include "Character.hpp"
-#include <Cstring>
+#include <string>
 
 using namespace std;
 
 Character::Character()
 {
     characterName = NULL;
+    characterJob = Default;
+    experience = 0;
+    level = 0;
+    healthPoints = 0;
+    attackStrength = 0;
 }
+
 
 Character::Character(char *Name, job Job)
 {
@@ -28,46 +34,46 @@ Character::Character(char *Name, job Job)
 
         characterJob = Job;
 
-        int experience = 0;
-        int experienceCapacity = 10;
-        int level = 1;
+         experience = 0;
+         experienceCapacity = 10;
+         level = 1;
 
         switch (Job)
         {
         case 0:
         {
-            int healthPoints = 50;
-            int attackStrength = 15;
+             healthPoints = 50;
+             attackStrength = 15;
             break;
         }
         case 1:
         {
-            int healthPoints = 20;
-            int attackStrength = 30;
+             healthPoints = 20;
+             attackStrength = 30;
             break;
         }
         case 2:
         {
-            int healthPoints = 30;
-            int attackStrength = 20;
+             healthPoints = 30;
+             attackStrength = 20;
             break;
         }
         case 3:
         {
-            int healthPoints = 35;
-            int attackStrength = 10;
+             healthPoints = 35;
+             attackStrength = 10;
             break;
         }
         case 4:
         {
-            int healthPoints = 25;
-            int attackStrength = 25;
+             healthPoints = 25;
+             attackStrength = 25;
             break;
         }
         default:
         {
-            int healthPoints = 0;
-            int attackStrength = 0;
+             healthPoints = 0;
+             attackStrength = 0;
             break;
         }
         }
@@ -97,9 +103,9 @@ Character::Character(char *Name, job Job, int hp, int Strength)
 
         characterJob = Job;
 
-        int experience = 0;
-        int experienceCapacity = 10;
-        int level = 1;
+         experience = 0;
+         experienceCapacity = 10;
+         level = 1;
         healthPoints = hp;
         attackStrength = Strength;
     }
@@ -121,5 +127,37 @@ void Character::getJob(job &Job)
 
 Character::~Character()
 {
-    delete characterName;
+    if(characterName != NULL)
+        delete characterName;
+}
+
+int Character::attack(Character character, Enemy attackd_enemy){
+    
+    int e_healthPoints = attackd_enemy.gethealth();
+    int e_attackStrength = attackd_enemy.getattack();
+    int e_experienceWorth = attackd_enemy.getexperiencworth();
+
+    while( healthPoints > 0 && e_healthPoints > 0)
+    {
+        e_healthPoints -= attackStrength;
+        if (e_healthPoints <= 0)
+        {
+            cout << characterName << " has won!!!" << endl <<
+                    "you got " << e_experienceWorth << "experience points" << endl <<
+                    "you have now " << experience + e_experienceWorth << "points of " << experienceCapacity << endl;
+            return e_experienceWorth;
+        }
+        else
+        {
+            healthPoints -= e_attackStrength;
+            if (healthPoints <= 0)
+            {
+                cout << characterName << " has lost..." << endl <<
+                    "you lost -5 experience points" << endl <<
+                    "you have now " << experience - 5 << "points of " << experienceCapacity << endl;
+                return -5;
+            }
+        }
+    }
+    return 0;
 }

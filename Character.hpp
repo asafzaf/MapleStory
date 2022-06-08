@@ -15,9 +15,11 @@ private:
     int healthPoints; // Character health
     int attackStrength;
 public:
-    int attack(Enemy enemy);
+    int attack(Character character, Enemy attackd_enemy);
     void getName(char const* &ptr);
     void getJob(job& Job);
+
+
     Character();
     Character( char* Name, job Job);
     Character( char* Name, job Job, int hp);

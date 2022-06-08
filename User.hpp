@@ -1,7 +1,7 @@
 #ifndef __USER__
 #define __USER__
 #include <iostream>
-#include <Cstring>
+#include <string>
 #include "Character.hpp"
 
 //namespace Users {
@@ -15,7 +15,7 @@ private:
 public:
     void login();
     int characterCount();
-    void insert_character(Character character, unsigned int index);
+    void insert_character(char* Name,job job, unsigned int index);
     void print_characters();
     int chosen_charecter;
 
