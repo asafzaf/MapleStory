@@ -133,9 +133,10 @@ void Character::attack(Enemy &attackd_enemy){
 
     int c_healthPoints = healthPoints;
     int c_attackStrength = attackStrength;
-    cout << endl << "copy" << endl;
-    cout << e_healthPoints << "\t" << e_attackStrength << "\t" << e_experienceWorth << endl;
-    cout << c_healthPoints << "\t" << c_attackStrength << "\t" << experience << endl;
+    cout << "let's fight!" << endl;
+    //cout << endl << "copy" << endl;
+    //cout << e_healthPoints << "\t" << e_attackStrength << "\t" << e_experienceWorth << endl;
+    //cout << c_healthPoints << "\t" << c_attackStrength << "\t" << experience << endl;
 
     while( c_healthPoints > 0 && e_healthPoints > 0)
     {
@@ -146,6 +147,8 @@ void Character::attack(Enemy &attackd_enemy){
             if ( experience >= experienceCapacity ) // the level up rule
             {
             ++level;
+            ++healthPoints;
+            ++attackStrength;
             experience -= experienceCapacity;
             experienceCapacity *= 2;
                 cout << characterName << " has won!!! and LEVELD UP!!! :)" << endl <<

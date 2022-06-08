@@ -68,31 +68,66 @@ int main()
     
     cin >> main_user.chosen_charecter;
 
-    //starting of attak
+    int MenuChoose = 0;
 
-    int choose;
-    
-    Character the_chosen_one;
-    main_user.ChooseCharacter(the_chosen_one,1);
-    
-    cout << "Attack mode!!!!!!" << endl << endl << "Enemys list:" << endl;
+    while( MenuChoose != 9)
+    {
+        MenuChoose = 0;
+        cout << endl << endl << "Please choose option:" << endl <<
+            "1 - Attack" << endl <<
+            "2 - Character experience ststus" << endl <<
+            "3 - Switch character" << endl;
+        cin >> MenuChoose;
+        switch(MenuChoose)
+        {
+            case 1:
+            {
+                int chooseCforAttk;
+                
+                Character the_chosen_one;
+                main_user.ChooseCharacter(the_chosen_one,1);
+                
+                cout << "Attack mode!!!!!!" << endl << endl << "Enemys list:" << endl;
 
-    //menu
+                //menu
 
-    cout << "no.\t||      Name    || HealthPoints ||   Strength   ||Eexperience Worth" << endl;
-    cout << "----------------------------------------------------------------------------" << endl;
+                cout << "no.\t||      Name    || HealthPoints ||   Strength   ||Eexperience Worth" << endl;
+                cout << "----------------------------------------------------------------------------" << endl;
 
-    for(int i = 0 ; i < numberofenemies ; i++){
-        cout << i+1 << " \t||\t";
-        enemies[i].PrintEnemy();
-        cout << endl;
+                for(int i = 0 ; i < numberofenemies ; i++){
+                    cout << i+1 << " \t||\t";
+                    enemies[i].PrintEnemy();
+                    cout << endl;
+                }
+
+                cout << "Please choose an enemy to attak: " << endl;
+                cin >> chooseCforAttk;
+
+                the_chosen_one.attack(enemies[chooseCforAttk-1]);
+                break;
+            }
+
+            case 2:
+            {
+                //character status
+                break;
+            }
+
+            case 3:
+            {
+                //switch character
+                cin >> main_user.chosen_charecter;
+                break;
+            }
+
+            default:
+            {
+                return 0;
+            }
+        }
     }
-
-    cout << "Please choose an enemy to attak: " << endl;
-    cin >> choose;
-
-    the_chosen_one.attack(enemies[choose-1]);
-
+    
+    //starting of attak
     return 0;
 }
 
