@@ -6,27 +6,22 @@
 using namespace std;
 char C1[] = "Jinx"; char C2[] = "Elie"; char C3[] = "Joul"; char C4[] = "Ash"; char C5[] = "Jack";
 Character characters[5] = {Character(C1,Warrior), Character(C2,Magician), Character(C3,Rouge), Character(C4,Archer), Character(C5,Pirate) } ;
+char E1_name[4] = "avi"; char E2_name[4] = "eli"; char E3_name[6] = "jakob"; char E4_name[6] = "david"; char E5_name[5] = "josh"; char E6_name[7] = "barbur"; char E7_name[7] = "sandal";
+Enemy enemies[7] = {Enemy(E1_name),
+                    Enemy(E2_name, 15, 15, 15),
+                    Enemy(E3_name, 22, 5, 10),
+                    Enemy(E4_name, 20, 10, 20),
+                    Enemy(E5_name, 50, 15, 30),
+                    Enemy(E6_name, 65, 30, 50),
+                    Enemy(E7_name, 50, 35, 30)};
+int numberofenemies = 7;
 char main_user_name[] = "YuviVerse";
 char main_user_pass[] = "TwitchTTV";
 //User main_user(main_user_name, main_user_pass);
-User main_user(main_user_name, main_user_pass,characters[0]);
-//User main_user(main_user_name, main_user_pass,characters);
+//User main_user(main_user_name, main_user_pass,characters[0]);
+User main_user(main_user_name, main_user_pass,characters);
 int main()
 {
-    char E1_name[4] = "avi";
-    char E2_name[4] = "eli";
-    char E3_name[6] = "jakob";
-    char E4_name[6] = "david";
-    char E5_name[5] = "josh";
-    char E6_name[7] = "barbur";
-    char E7_name[7] = "sandal";
-    Enemy E1(E1_name);
-    Enemy E2(E2_name, 15, 15, 15);
-    Enemy E3(E3_name, 22, 5, 10);
-    Enemy E4(E4_name, 20, 10, 20);
-    Enemy E5(E5_name, 50, 15, 30);
-    Enemy E6(E6_name, 65, 30, 50);
-    Enemy E7(E7_name, 50, 35, 30);
     Character new_character;
     cout << "           <<LOG-IN>>" << endl;
     cout << "            ````````" << endl;
@@ -72,5 +67,32 @@ int main()
     cout << "--------> " << endl;
     
     cin >> main_user.chosen_charecter;
+
+    //starting of attak
+
+    int choose;
+    
+    Character the_chosen_one;
+    main_user.ChooseCharacter(the_chosen_one,1);
+    
+    cout << "Attack mode!!!!!!" << endl << endl << "Enemys list:" << endl;
+
+    //menu
+
+    cout << "no.\t||      Name    || HealthPoints ||   Strength   ||Eexperience Worth" << endl;
+    cout << "----------------------------------------------------------------------------" << endl;
+
+    for(int i = 0 ; i < numberofenemies ; i++){
+        cout << i+1 << " \t||\t";
+        enemies[i].PrintEnemy();
+        cout << endl;
+    }
+
+    cout << "Please choose an enemy to attak: " << endl;
+    cin >> choose;
+
+    the_chosen_one.attack(enemies[choose-1]);
+
     return 0;
 }
+

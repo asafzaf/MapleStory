@@ -22,7 +22,7 @@ public:
     User(char Name[], char pass[]);
     User(char Name[], char pass[], Character the_character);
     User(char Name[], char pass[], Character the_character[]);
-    
+    void ChooseCharacter(Character &choosen_character, int num);
     
     ~User();
 } ;

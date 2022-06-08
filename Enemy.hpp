@@ -17,6 +17,7 @@ public:
     int getattack();
     int gethealth();
     int getexperiencworth();
+    void PrintEnemy();
     ~Enemy();
 } ;
 

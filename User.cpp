@@ -138,8 +138,13 @@ void User::print_characters(){
         cout << i+1 << ".  " << curr_name << "    " << job_list[curr_job] << endl;
 
     }
-
 }
+
+void User::ChooseCharacter(Character &choosen_character, int num){
+    choosen_character = characters[num];
+}
+
+
 User::~User()
 {
     for (int i = 0; i < 5; i++)
