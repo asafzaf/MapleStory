@@ -58,7 +58,7 @@ int main()
         cout << "------------------> ";
         cin >> character_job;
 
-        while(character_job < 0 || character_job > 4){ // job choise validation
+        while(character_job < 0 || character_job > 4){ // job choice validation
             cout << "Invalid Job!, please try again" << endl;
             cout << "Select Job:";
             cin >> character_job;
@@ -75,20 +75,22 @@ int main()
     main_user.print_characters();
     cout << "--------> " << endl;
     
-    int choiseChar;
-    cin >> choiseChar;
+    Character the_chosen_one;
 
-    while( choiseChar > main_user.characterCount() || choiseChar < 0 ){ // character choise validation
+    int choiceChar;
+
+    cin >> choiceChar;
+
+    while( choiceChar > main_user.characterCount() || choiceChar < 0 ){ // character choice validation
         cout << "Invalid choice! you have " << main_user.characterCount() << " Characters" << endl <<
         "Please try again: ";
-        cin >> choiseChar;
+        cin >> choiceChar;
     }
+    main_user.ChooseCharacter(the_chosen_one, choiceChar-1);
 
-    Character the_chosen_one;
-    main_user.ChooseCharacter(the_chosen_one, choiseChar-1);
+// character choice Menu
     int MenuChoose = 0;
-
-    while( MenuChoose != 9) // character choise Menu
+    while( MenuChoose != 9) 
     {
         MenuChoose = 0;
         cout << endl << endl << "Please choose option:" << endl <<
@@ -142,14 +144,13 @@ int main()
                 main_user.print_characters();
                 cout << "--------> " << endl;
                 
-                int choiseChar;
-                cin >> choiseChar;
-                while( choiseChar > main_user.characterCount() || choiseChar < 0 ){
+                cin >> choiceChar;
+                while( choiceChar > main_user.characterCount() || choiceChar < 0 ){
                     cout << "Invalid choice! you have " << main_user.characterCount() << " Characters" << endl <<
                     "Please try again: ";
-                    cin >> choiseChar;
+                    cin >> choiceChar;
                 }
-                main_user.ChooseCharacter(the_chosen_one, choiseChar-1);
+                main_user.ChooseCharacter(the_chosen_one, choiceChar-1);
 
                 break;
             }
