@@ -1,7 +1,7 @@
 #ifndef __ENEMY__
 #define __ENEMY__
 #include <iostream>
-#include <string>
+#include <Cstring>
 
 class Enemy {
 private:
@@ -17,6 +17,7 @@ public:
     int getattack();
     int gethealth();
     int getexperiencworth();
+    void PrintEnemy();
     ~Enemy();
 } ;
 
