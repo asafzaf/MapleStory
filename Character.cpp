@@ -125,20 +125,6 @@ Character::~Character()
     delete characterName;
 }
 
-int Character::GETexperience(){
-    return experience;
-}
-
-int Character::GETexperienceCapacity(){
-    return experienceCapacity;
-}
-
-int Character::GETlevel(){
-    return level;
-}
-
-
-
 void Character::attack(Enemy &attackd_enemy){
     
     int e_healthPoints = attackd_enemy.gethealth();
@@ -147,7 +133,10 @@ void Character::attack(Enemy &attackd_enemy){
 
     int c_healthPoints = healthPoints;
     int c_attackStrength = attackStrength;
-    cout << endl << "let's fight!" << endl << "-----------" << endl << "boom!" << endl << "poww" << endl << "..." << endl << endl;
+    cout << "let's fight!" << endl;
+    //cout << endl << "copy" << endl;
+    //cout << e_healthPoints << "\t" << e_attackStrength << "\t" << e_experienceWorth << endl;
+    //cout << c_healthPoints << "\t" << c_attackStrength << "\t" << experience << endl;
 
     while( c_healthPoints > 0 && e_healthPoints > 0)
     {
@@ -170,7 +159,7 @@ void Character::attack(Enemy &attackd_enemy){
             else
             {
                 cout << characterName << " has won!!!" << endl <<
-                        "you got " << e_experienceWorth << " experience points" << endl <<
+                        "you got " << e_experienceWorth << "experience points" << endl <<
                         "you have now " << experience << " points of " << experienceCapacity << endl;
             }
         }
