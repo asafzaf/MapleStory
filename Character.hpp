@@ -18,6 +18,9 @@ public:
     void attack(Enemy &attackd_enemy);
     void getName(char const* &ptr);
     void getJob(job& Job);
+    int GETexperience();
+    int GETexperienceCapacity();
+    int GETlevel();
     Character();
     Character( char* Name, job Job);
     Character( char* Name, job Job, int hp);
