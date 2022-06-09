@@ -62,12 +62,20 @@ int main()
     {
        cout << endl << "           ~~|Select Character|~~ " << endl; 
     }
-
+    
     main_user.print_characters();
     cout << "--------> " << endl;
     
-    cin >> main_user.chosen_charecter;
+    int choiseChar;
+    cin >> choiseChar;
+    while( choiseChar > main_user.characterCount() || choiseChar < 0 ){
+        cout << "Invalid choice! you have " << main_user.characterCount() << " Characters" << endl <<
+        "Please try again: ";
+        cin >> choiseChar;
+    }
 
+    Character the_chosen_one;
+    main_user.ChooseCharacter(the_chosen_one, choiseChar-1);
     int MenuChoose = 0;
 
     while( MenuChoose != 9)
@@ -80,12 +88,12 @@ int main()
         cin >> MenuChoose;
         switch(MenuChoose)
         {
-            case 1:
+            case 1: // Attak
             {
                 int chooseCforAttk;
                 
-                Character the_chosen_one;
-                main_user.ChooseCharacter(the_chosen_one,1);
+                //Character the_chosen_one;
+                //main_user.ChooseCharacter(the_chosen_one,1);
                 
                 cout << "Attack mode!!!!!!" << endl << endl << "Enemys list:" << endl;
 
@@ -107,16 +115,30 @@ int main()
                 break;
             }
 
-            case 2:
+            case 2: // Character status
             {
-                //character status
+                cout << endl << "Character status:" << endl << "----------------" << endl <<
+                "Character level: " << the_chosen_one.GETlevel() << endl <<
+                the_chosen_one.GETexperience() << " of " << the_chosen_one.GETexperienceCapacity() << " experience points" << endl <<
+                "To next level --> " << (the_chosen_one.GETexperienceCapacity()-the_chosen_one.GETexperience()) << " points";
                 break;
             }
 
-            case 3:
+            case 3: // Switch Character
             {
-                //switch character
-                cin >> main_user.chosen_charecter;
+                cout << endl << "           ~~|Select Character|~~ " << endl;
+                main_user.print_characters();
+                cout << "--------> " << endl;
+                
+                int choiseChar;
+                cin >> choiseChar;
+                while( choiseChar > main_user.characterCount() || choiseChar < 0 ){
+                    cout << "Invalid choice! you have " << main_user.characterCount() << " Characters" << endl <<
+                    "Please try again: ";
+                    cin >> choiseChar;
+                }
+                main_user.ChooseCharacter(the_chosen_one, choiseChar-1);
+
                 break;
             }
 
