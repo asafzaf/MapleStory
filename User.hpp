@@ -13,16 +13,22 @@ private:
     Character characters[5]; //Notice it’s an array of the next Class
     
 public:
+
+    int current_character;
+   
+//--==functions==--//   
     void login();
     int characterCount();
     void insert_character();
     void print_characters();
-    int chosen_charecter;
+    void update_character(Character characrter,unsigned int index);
+    void ChooseCharacter(Character &choosen_character, int num);
 
+
+//--==constructors==--//
     User(char Name[], char pass[]);
     User(char Name[], char pass[], Character the_character);
     User(char Name[], char pass[], Character the_character[]);
-    void ChooseCharacter(Character &choosen_character, int num);
     
     ~User();
 } ;
