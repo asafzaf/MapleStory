@@ -17,10 +17,13 @@ private:
 public:
     void attack(Enemy &attackd_enemy);
     void getName(char const* &ptr);
+    void copyname(char* &ptr);
     void getJob(job& Job);
     int GETexperience();
     int GETexperienceCapacity();
     int GETlevel();
+    void copyCharacter(Character character);
+    void setCharacter(char* Name, job Job);
     Character();
     Character( char* Name, job Job);
     Character( char* Name, job Job, int hp);

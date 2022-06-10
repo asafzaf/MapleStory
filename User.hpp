@@ -15,7 +15,7 @@ private:
 public:
     void login();
     int characterCount();
-    void insert_character(Character character, unsigned int index);
+    void insert_character();
     void print_characters();
     int chosen_charecter;
 

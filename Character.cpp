@@ -5,7 +5,9 @@ using namespace std;
 
 Character::Character()
 {
+
     characterName = NULL;
+    characterJob = Default;
 }
 
 Character::Character(char *Name, job Job)
@@ -78,7 +80,70 @@ Character::Character(char *Name, job Job)
         cout << "ERROR" << endl;
     }
 }
+Character::Character( char* Name, job Job, int hp){
 
+try
+    {
+        characterName = new char[strlen(Name) + 1];
+        if (characterName == NULL)
+        {
+            throw 1;
+        }
+        strcpy(characterName, Name);
+
+        if (Job > 4 || Job < 0)
+        {
+            throw 2;
+        }
+
+        characterJob = Job;
+
+        experience = 0;
+        experienceCapacity = 10;
+        level = 1;
+        healthPoints = hp;
+    }
+    catch (int e)
+    {
+        cout << "ERROR" << endl;
+    }
+
+    switch (Job)
+        {
+        case 0:
+        {
+            attackStrength = 15;
+            break;
+        }
+        case 1:
+        {
+            attackStrength = 30;
+            break;
+        }
+        case 2:
+        {
+            attackStrength = 20;
+            break;
+        }
+        case 3:
+        {
+            attackStrength = 10;
+            break;
+        }
+        case 4:
+        {
+            attackStrength = 25;
+            break;
+        }
+        default:
+        {
+            attackStrength = 0;
+            break;
+        }
+        }
+                cout << "character created!!!  "<< Name << "\t" << healthPoints << "\t" << attackStrength << "\t" << level << endl; 
+
+}
 Character::Character(char *Name, job Job, int hp, int Strength)
 {
 
@@ -109,10 +174,94 @@ Character::Character(char *Name, job Job, int hp, int Strength)
         cout << "ERROR" << endl;
     }
 }
+void Character::setCharacter(char* Name, job Job){
+    characterName = new char[strlen(Name) + 1];
+    if(characterName == NULL){
+        printf("\nEROOR\n");
+        return;
+    }
+    strcpy(characterName, Name);
+
+    if(Job > 4 || Job < 0){
+        printf("\nEROOR\n");
+        return;
+    }
+
+    characterJob = Job;
+    switch (Job)
+        {
+        case 0:
+        {
+            healthPoints = 50;
+            attackStrength = 15;
+            break;
+        }
+        case 1:
+        {
+            healthPoints = 20;
+            attackStrength = 30;
+            break;
+        }
+        case 2:
+        {
+            healthPoints = 30;
+            attackStrength = 20;
+            break;
+        }
+        case 3:
+        {
+            healthPoints = 35;
+            attackStrength = 10;
+            break;
+        }
+        case 4:
+        {
+            healthPoints = 25;
+            attackStrength = 25;
+            break;
+        }
+        default:
+        {
+            healthPoints = 0;
+            attackStrength = 0;
+            break;
+        }
+        }
+
+
+
+}
+
+void Character::copyCharacter(Character character){
+    cout << character.characterName << endl;
+    characterName = new char[strlen(character.characterName) + 1];
+    strcpy(characterName, character.characterName);
+    cout << this->characterName << endl;
+    characterJob = character.characterJob;
+
+    experience = character.experience;
+    experienceCapacity = character.experienceCapacity;
+    level = character.level;
+    healthPoints = character.healthPoints;
+    attackStrength = character.attackStrength;
+
+
+}
 
 void Character::getName(char const *&ptr)
 {
     ptr = characterName;
+}
+void Character::copyname(char* &ptr){
+    if (characterName != NULL)
+    {
+        ptr = new char[strlen(characterName) + 1];
+        strcpy(ptr, characterName);
+        return;
+    }
+
+        ptr = NULL;
+        return;
 }
 
 void Character::getJob(job &Job)

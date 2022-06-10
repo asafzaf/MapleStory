@@ -6,6 +6,7 @@ all: maple
 maple: main.o User.o Character.o Enemy.o 
 	$(pp) $(OBJS) -o maple.exe
 	./maple.exe
+	del *.o
 
 main.o: main.cpp
 	$(pp) -c main.cpp

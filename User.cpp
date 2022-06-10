@@ -28,15 +28,17 @@ User::User(char *Name, char *pass)
 
 User::User(char Name[], char pass[], Character the_character)
 {
-    char initName[] = "N/A";
+     char const * newName;
+    // job newjob;
     strcpy(userName, Name);
     strcpy(password, pass);
 
-    characters[0] = the_character;
-    for (int i = 1; i < 5; i++)
-    {
-        characters[i] = Character(initName, Default);
-    }
+    // the_character.copyname(Name);
+    // the_character.getJob(newjob);
+
+
+    characters[0] = Character();
+    characters[0].copyCharacter(the_character);
 
     cout << "User created!" << endl
          << "User name: " << userName << endl;
@@ -49,7 +51,8 @@ User::User(char Name[], char pass[], Character the_character[])
     strcpy(password, pass);
     for (int i = 0; i < 5; i++)
     {
-        characters[i] = the_character[i];
+        characters[i] = Character();
+        characters[i].copyCharacter(the_character[i]);
     }
     cout << "User created!" << endl
          << "User name: " << userName << endl;
@@ -60,7 +63,8 @@ void User::login()
 
     char loginName[10];
     char loginPass[10];
-
+    cout << "           <<LOG-IN>>" << endl;
+    cout << "            ~~~~~~~~" << endl;
     cout << "User Name: ";
     cin >> loginName;
     cout << "Password: ";
@@ -75,13 +79,15 @@ void User::login()
         cout << "Password: ";
         cin >> loginPass;
     }
+    cout << "\t\tLogin successful!\n" << endl;
+    cout << "\t    --==WELCOME " << userName << "==--" << endl;
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl
          << endl;
 }
 
 int User::characterCount()
 {
-    char  initName[] = "N/A";
+
     int count = 0;
     char const *curr_Name;
     job curr_job;
@@ -89,30 +95,48 @@ int User::characterCount()
     {
         characters[i].getName(curr_Name);
         characters[i].getJob(curr_job);
-        if (strcmp(curr_Name, initName) && curr_job != Default){
+        if (curr_Name != NULL && curr_job != Default){
             count++;
         }
     }
     return count;
 }
 
-void User::insert_character(Character character, unsigned int index){
+void User::insert_character(){
+    char* character_name = new char;
+    int character_job;
+
+     cout << "__________________________________________________" << endl;
+                cout << "            ~~|Create New Character|~~" << endl;
+                cout << "              ~~~~~~~~~~~~~~~~~~~~~~" << endl;
+
+                cout << "Character Name: "; // new mane for character
+                cin >> character_name;
+
+                cout << endl << "                 ~~|Select Job|~~ " << endl; // new job
+
+                cout << "         0 - Warrior" << "          " << "1 - Magician" << endl;
+                cout << "         2 - Rouge" << "            " << "3 - Archer" << endl;
+                cout << "         4 - Pirate" << endl;
+                cout << "------------------> ";
+                cin >> character_job;
+
+                while(character_job < 0 || character_job > 4){ // job choice validation
+                    cout << "Invalid Job!, please try again" << endl;
+                    cout << "Select Job:";
+                    cin >> character_job;
+                }
 
     job job_check;
 
+    for(int i = 0 ; i < 5 ; i++){
 
-    if(index > 4){
-        cout << "Invalid Index, searching for empty space" << endl;
-        index = 0;
-    }
-
-    for( ;index < 5 ; index++){
-
-    characters[index].getJob(job_check);
+    characters[i].getJob(job_check);
    
     if(job_check == Default){
-        characters[index].~Character();
-        characters[index] = character;
+
+        characters[i].setCharacter(character_name, (job)character_job);
+        cout << "Character Created successfuly!" << endl;
         return;
     }
     }
@@ -124,14 +148,14 @@ void User::print_characters(){
    char J0[] = "Warrior"; char J1[] = "Magician"; char J2[] = "Rouge"; char J3[] = "Archer"; char J4[] = "Pirate";
    char *job_list[5] = {J0, J1, J2, J3, J4 };
    job curr_job;
-   char const* curr_name;
+   char * curr_name;
     for (int i = 0 ; i < 5 ; i++){
-        characters[i].getName(curr_name);
+        characters[i].copyname(curr_name);
         characters[i].getJob(curr_job);
 
         if (curr_job == Default){
 
-         cout << i+1 << ".  " << curr_name << "    " << "-" << endl ;
+         cout << i+1 << ".  " << "    " << "-" << endl ;
             continue;
         }
 
