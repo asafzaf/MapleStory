@@ -1,3 +1,9 @@
+/*
+========ASSIGNED BY======== 
+  Rony Zrihen 318917549
+  Asaf Zafrir 205929029
+ */
+
 #include "Character.hpp"
 #include <Cstring>
 
@@ -61,7 +67,7 @@ void Character::setCharacter(char* Name, job Job){
 
 }
 void Character::update(int Exp, int Exp_Cap, int Level){
-    
+
 if(experience == Exp && experienceCapacity == Exp_Cap && level == Level){
     cout << "No update needed" << endl;
     return;

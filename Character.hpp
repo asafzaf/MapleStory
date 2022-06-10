@@ -1,3 +1,9 @@
+/*
+========ASSIGNED BY======== 
+  Rony Zrihen 318917549
+  Asaf Zafrir 205929029
+ */
+
 #ifndef __CHARACTER__
 #define __CHARACTER__
 #include "Enemy.hpp"

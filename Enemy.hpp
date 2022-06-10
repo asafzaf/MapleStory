@@ -1,3 +1,8 @@
+/*
+========ASSIGNED BY======== 
+  Rony Zrihen 318917549
+  Asaf Zafrir 205929029
+ */
 #ifndef __ENEMY__
 #define __ENEMY__
 #include <iostream>
